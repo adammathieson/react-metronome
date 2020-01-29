@@ -1,12 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Metronome from './components/Metronome'
 
 function App() {
   return (
     <div className="App">
-      <h1>Metronome</h1>
+      <Metronome />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
