@@ -4,6 +4,8 @@ import './Metronome.css'
 const Metronome = () => {
     const [ bpm, setBpm ] = useState(100)
     const [ playing, setPlaying ] = useState(false)
+    const [ count, setCount ] = useState(0)
+    const [ beatsPerMeasure, setBeatsPerMeasure ] = useState(4)
 
     return (
         <div className="metronome">
