@@ -20,7 +20,33 @@ const Metronome = () => {
     }
 
     const startStop = () => {
-        clickOne.play()
+        let timer
+        if (playing) {
+            // Stop the timer
+            clearInterval(timer)
+            setPlaying(false)
+        } else {
+            // Start a timer with the current BPM
+            let timer = setInterval(
+                playClick,
+                (60 / bpm) * 1000
+            )
+            setCount(0)
+            setPlaying(true)
+            playClick()
+        }
+    }
+
+    const playClick = () => {
+        // The first beat of interval will be different than the others
+        if (count % beatsPerMeasure === 0) {
+            clickTwo.play()
+        } else {
+            clickOne.play()
+        }
+
+        // Keep track of which beat we're on
+        setCount((count+1) % beatsPerMeasure)
     }
 
     return (
