@@ -19,7 +19,6 @@ const Metronome = () => {
         setBpm(bpm)
     }
 
-    
     const playClick = () => {
         // The first beat of interval will be different than the others
         if (count % beatsPerMeasure === 0) {
