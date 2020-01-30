@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Metronome.css'
 import click1 from '../assets/click1.wav'
 import click2 from '../assets/click2.wav'
@@ -19,24 +19,7 @@ const Metronome = () => {
         setBpm(bpm)
     }
 
-    const startStop = () => {
-        let timer
-        if (playing) {
-            // Stop the timer
-            clearInterval(timer)
-            setPlaying(false)
-        } else {
-            // Start a timer with the current BPM
-            let timer = setInterval(
-                playClick,
-                (60 / bpm) * 1000
-            )
-            setCount(0)
-            setPlaying(true)
-            playClick()
-        }
-    }
-
+    
     const playClick = () => {
         // The first beat of interval will be different than the others
         if (count % beatsPerMeasure === 0) {
@@ -44,9 +27,33 @@ const Metronome = () => {
         } else {
             clickOne.play()
         }
-
+        
         // Keep track of which beat we're on
         setCount((count+1) % beatsPerMeasure)
+    }
+
+    // const timer = setInterval(playClick, (60 / bpm) * 1000)
+
+    useEffect(() => {
+        if (playing) {
+            const timer = setInterval(
+                playClick,
+                (60 / bpm) * 1000
+            )
+            return () => {
+                clearInterval(timer)
+        }
+        };
+    }, [playing, bpm])
+        
+    const startStop = () => {
+        if (playing) {
+            setPlaying(false)
+        } else {
+            setCount(0)
+            setPlaying(true)
+            playClick()
+        }
     }
 
     return (
