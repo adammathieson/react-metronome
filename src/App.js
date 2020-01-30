@@ -1,13 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Metronome from './components/Metronome'
 
 function App() {
   return (
     <div className="App">
-      <h1>Metronome</h1>
+      <h1>Keep time</h1>
+      <Metronome />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
