@@ -44,7 +44,7 @@ const Metronome = () => {
                 clearInterval(timer)
         }
         };
-    }, [playing, bpm])
+    }, [playing, bpm, playClick])
         
     const startStop = () => {
         if (playing) {
