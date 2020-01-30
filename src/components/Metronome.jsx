@@ -36,13 +36,8 @@ const Metronome = () => {
 
     useEffect(() => {
         if (playing) {
-            const timer = setInterval(
-                playClick,
-                (60 / bpm) * 1000
-            )
-            return () => {
-                clearInterval(timer)
-        }
+            const timer = setInterval(playClick,(60 / bpm) * 1000)
+            return () => clearInterval(timer)
         };
     }, [playing, bpm, playClick])
         
